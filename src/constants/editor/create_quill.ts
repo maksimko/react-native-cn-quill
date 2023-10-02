@@ -4,6 +4,7 @@ export const create_quill = ({
   clipboard,
   keyboard,
   placeholder,
+  formats,
   theme,
   customFonts = [],
   customJS,
@@ -14,6 +15,7 @@ export const create_quill = ({
   clipboard: string;
   keyboard: string;
   placeholder: string;
+  formats?: string[];
   theme: 'snow' | 'bubble';
   customFonts: Array<string>;
   customJS: string;
@@ -44,13 +46,17 @@ export const create_quill = ({
   <script>
   
   ${font}
-  ${customJS}
+  
   var quill = new Quill('#${id}', {
     modules: { ${modules} },
     placeholder: '${placeholder}',
     theme: '${theme}',
     readOnly: ${readonly},
+    formats: ${!formats ? undefined : JSON.stringify(formats)}
   });
+
+  ${customJS}
+
   </script>
   `;
 };
