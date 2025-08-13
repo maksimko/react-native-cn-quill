@@ -405,7 +405,7 @@ export default class QuillEditor extends React.Component<
       domStorageEnabled={false}
       automaticallyAdjustContentInsets={true}
       bounces={false}
-      dataDetectorTypes="none"
+      dataDetectorTypes={Platform.OS === 'ios' ? 'none' : ['none']}
       {...props}
       javaScriptEnabled={true}
       source={{ html: content }}
